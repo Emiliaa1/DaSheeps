@@ -2,8 +2,17 @@ from sense_hat import SenseHat
 from time import sleep
 import csv
 from pathlib import Path
+from datetime import datetime, timedelta
 
+#Set up a logfile
+logfile(base_folder/"events.log")
+
+base_folder = Path(__file__).parent.resolve()
+
+#initialise sense hat
 sense = SenseHat()
+
+#initialise csv file
 data_file = base_folder/"data.csv"
 
 def create_csv_file(data_file):
@@ -42,9 +51,21 @@ def Sense_Hat_LEDMatrix(sense):
     #Display the image
     sense.set_pixels(image)
     sleep(3)
+    #Reset the LED Matrix
     sense.clear()
 
 Sense_Hat_LEDMatrix(sense)
+
+#Record the start and current time
+start_time = datetime.now()
+now_time = datetime.now()
+
+#Run a loop for almost three hours
+while(now_time < start_time + timedelta(minutes = 178)):
+    try:
+        #----------
+    except Exception as e:
+        logger.error(f'{e.__class__.__name__}: {e}')
 
 
 
