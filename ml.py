@@ -52,10 +52,12 @@ def update_centroids(clusters, n_clusters, n_feats):
         centroids[i] = np.mean(clusters[i], axis=0)
     return centroids
 
+#the kmeans function
 def kmeans(data, k):
     n_feats = data.shape[1]
     assign = {}
     
+    #calling the previous functions
     centroids = random_init_clusters(data, n_clusters = k)
     assign, clusters = assign_clusters(data, centroids)
     
@@ -69,4 +71,7 @@ def kmeans(data, k):
         if old_assign == assign:
             break
     return centroids, assignment
-    
+
+#calling the function for the needed variables
+np.random.seed(121)
+centroids, assignment = kmeans(bacteria_feats, k=5)
