@@ -74,4 +74,5 @@ def kmeans(data, k):
 
 #calling the function for the needed variables
 np.random.seed(121)
+#bacteria_feats is the csv
 centroids, assignment = kmeans(bacteria_feats, k=5)
