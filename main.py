@@ -55,6 +55,7 @@ def Sense_Hat_LEDMatrix(sense):
     sense.clear()
 
 Sense_Hat_LEDMatrix(sense)
+        
 
 #Record the start and current time
 start_time = datetime.now()
@@ -63,9 +64,8 @@ now_time = datetime.now()
 #Run a loop for almost three hours
 while(now_time < start_time + timedelta(minutes = 178)):
     try:
-        #----------
+        humidity = round(sense.humidity,5)
+        temperature = round(sense.temperature,5)
+        pressure = round(sense.pressure,5)
     except Exception as e:
         logger.error(f'{e.__class__.__name__}: {e}')
-
-
-
