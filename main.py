@@ -68,6 +68,8 @@ while(now_time < start_time + timedelta(minutes = 178)):
         temperature = round(sense.temperature,5)
         pressure = round(sense.pressure,5)
         
+        bacteria_found = verif_new_data(humidity,temperature,pressure)
+        
         #Display image on the matrix
         Sense_Hat_LEDMatrix(sense)
         
