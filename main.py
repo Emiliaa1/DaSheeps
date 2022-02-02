@@ -22,12 +22,13 @@ def create_csv_file(data_file):
         header = ("Counter","Date/time","Temperature","Humidity","Barometic pressure")
         writer.writerow(header)
 
+create_csv_file(data_file)
+
 def add_csv_data(data_file, data):
     #Add a row of data to the data_file csv
     with open(data_file, 'a') as f:
         writer = csv.writer(f)
         writer.writerow(data)
-        
 
 # function for displaying a drawing of a bacteria
 def Sense_Hat_LEDMatrix(sense):
