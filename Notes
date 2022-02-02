@@ -1,6 +1,8 @@
 Am facut algoritmul pentru clustering cu metoda Kmeans dar practic imi ace clusteri cu datele pe care i le dau eu ca sa antrenez algoritmul
 -> Asta inseamna ca trebuie sa mai fac o functie care sa imi adauge data points noi (practic iterez prin vectorul cu centroizi si calculez distanta minima)
--> Mai am de facut o functie pentru a adauga un csv facut separat intr-o matrice si sa lucrez cu ea
+
+-> Mai am de facut o functie pentru a adauga un csv facut separat intr-o matrice si sa lucrez cu ea (ASTA E FACUTA DAR CSV UL SA FIE NUMIT Training_data.csv!!!!!!!!!)
+
 -> Pe langa asta, mai trebuie sa setez un interval de timp in care sa colectez date pe care mai apoi sa le verific cu kmeans ( banuiesc ca 5-10 minute vedem )
 -> Si mai trebuie sa creez o conditie legata de aparitia imaginilor pe LED Matrix
                     
