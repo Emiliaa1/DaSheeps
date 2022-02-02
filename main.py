@@ -54,8 +54,6 @@ def Sense_Hat_LEDMatrix(sense):
     sleep(3)
     #Reset the LED Matrix
     sense.clear()
-
-Sense_Hat_LEDMatrix(sense)
         
 
 #Record the start and current time
@@ -65,8 +63,18 @@ now_time = datetime.now()
 #Run a loop for almost three hours
 while(now_time < start_time + timedelta(minutes = 178)):
     try:
+        #Get humidity, temperature and pressure
         humidity = round(sense.humidity,5)
         temperature = round(sense.temperature,5)
         pressure = round(sense.pressure,5)
+        
+        #Display image on the matrix
+        Sense_Hat_LEDMatrix(sense)
+        
+        #make a 5 miutes delay
+        sleep(300)
+        
+        #Update time
+        now_time = datetime.now()
     except Exception as e:
         logger.error(f'{e.__class__.__name__}: {e}')
