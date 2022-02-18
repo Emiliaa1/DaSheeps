@@ -10,7 +10,7 @@ import numpy as np
 
 base_folder = Path(__file__).parent.resolve()
 
-logfile(base_folder/"events.log")
+logfile(f"{base_folder}/events.log")
 
 #initialise sense hat
 sense = SenseHat()
