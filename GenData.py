@@ -1,3 +1,4 @@
+import sklearn.datasets as dataset
 def generate_data(n_samples=20, n_feats=2):
   """ Generates simulated data.
 
