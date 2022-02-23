@@ -1,13 +1,16 @@
 from sense_hat import SenseHat
+from logzero import logger, logfile
 from time import sleep
 import csv
 from pathlib import Path
 from datetime import datetime, timedelta
+import numpy as np
 
 #Set up a logfile
-logfile(base_folder/"events.log")
 
 base_folder = Path(__file__).parent.resolve()
+
+logfile(f"{base_folder}/events.log")
 
 #initialise sense hat
 sense = SenseHat()
@@ -22,13 +25,17 @@ def create_csv_file(data_file):
         header = ("Counter","Date/time","Temperature","Humidity","Barometic pressure")
         writer.writerow(header)
 
-create_csv_file(data_file)
-
 def add_csv_data(data_file, data):
     #Add a row of data to the data_file csv
     with open(data_file, 'a') as f:
         writer = csv.writer(f)
         writer.writerow(data)
+        
+"""
+def Bacteria(sense):
+    green = (43,107,76)
+    sense.show_message("BACTERIA", text_colour = green)
+"""
 
 # function for displaying a drawing of a bacteria
 def Sense_Hat_LEDMatrix(sense):
@@ -54,7 +61,9 @@ def Sense_Hat_LEDMatrix(sense):
     sleep(3)
     #Reset the LED Matrix
     sense.clear()
-        
+
+
+#Bacteria(sense)
 
 #Record the start and current time
 start_time = datetime.now()
@@ -66,17 +75,18 @@ while(now_time < start_time + timedelta(minutes = 178)):
         #Get humidity, temperature and pressure
         humidity = round(sense.humidity,5)
         temperature = round(sense.temperature,5)
-        pressure = round(sense.pressure,5)
+        pressure = round(sense.pressure, 5)
         
-        bacteria_found = verif_new_data(humidity,temperature,pressure)
+       # bacteria_found = verif_new_data(humidity,temperature,pressure)
         
         #Display image on the matrix
         Sense_Hat_LEDMatrix(sense)
         
-        #make a 5 miutes delay
-        sleep(300)
+        #make a 5 minutes delay
+        sleep(30)
         
         #Update time
         now_time = datetime.now()
+        
     except Exception as e:
         logger.error(f'{e.__class__.__name__}: {e}')
