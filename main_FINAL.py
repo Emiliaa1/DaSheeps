@@ -187,7 +187,7 @@ while(now_time < start_time + timedelta(minutes = 178)):
         temperature = round(sense.temperature,5)
         pressure = round(sense.pressure, 5)
         
-        bacteria_found = verif_new_data(humidity,temperature,pressure)
+        bacteria_found = verif_new_data(temperature,humidity,pressure)
         
         location = ISS.coordinates()
         data = (
