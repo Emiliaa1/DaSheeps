@@ -5,13 +5,11 @@ import csv
 from pathlib import Path
 from datetime import datetime, timedelta
 import numpy as np
-#from orbit import ISS
-
-
-
-
+from orbit import ISS
 import math 
 import sklearn.datasets as dataset
+
+
 
 def generate_data(n_samples=20, n_feats=2):
   """ Generates simulated data.
@@ -37,6 +35,8 @@ def generate_data(n_samples=20, n_feats=2):
   x = np.append(x, [[1, 5], [15, 1]], axis=0)
   return x
 
+
+#function that converts the data set csv to an array
 def add_data():
     x = np.genfromtxt("Test.csv", delimiter = ",")
     return x
@@ -158,7 +158,7 @@ def create_csv_file(data_file):
     #Create a new csv file and add the header row
     with open (data_file,'w') as f:
         writer = csv.writer(f)
-        header = ("Counter","Date/time","Temperature","Humidity","Barometic pressure","Cluster")
+        header = ("Counter","Date/time","Latitude","Longitude","Temperature","Humidity","Barometic pressure","Cluster")
         writer.writerow(header)
 
 def add_csv_data(data_file, data):
@@ -167,11 +167,7 @@ def add_csv_data(data_file, data):
         writer = csv.writer(f)
         writer.writerow(data)
         
-"""
-def Bacteria(sense):
-    green = (43,107,76)
-    sense.show_message("BACTERIA", text_colour = green)
-"""
+
 
 # function for displaying a drawing of a bacteria
 def Sense_Hat_LEDMatrix(sense):
@@ -199,7 +195,6 @@ def Sense_Hat_LEDMatrix(sense):
     sense.clear()
 
 
-#Bacteria(sense)
 create_csv_file(data_file)
 #Record the start and current time
 start_time = datetime.now()
@@ -217,27 +212,23 @@ while(now_time < start_time + timedelta(minutes = 178)):
         
         bacteria_found = verif_new_data(humidity,temperature,pressure)
         
-       # location = ISS.coordinates()
-        lat = 2
-        long = 3
+        location = ISS.coordinates()
         data = (
             counter,
             datetime.now(),
-            lat,
-            long,
-           # location.latitude.degrees,
-            #location.longitude.degrees,
+            location.latitude.degrees,
+            location.longitude.degrees,
             temperature,
             humidity,
             pressure,
-           # bacteria_found,
+            bacteria_found,
         )
         
         add_csv_data(data_file,data)
         #Display image on the matrix
         Sense_Hat_LEDMatrix(sense)
         
-        #make a 5 minutes delay
+        #make a 15 seconds delay
         sleep(30)
         
         logger.info(f"iteration {counter}")
