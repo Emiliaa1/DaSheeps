@@ -2,11 +2,11 @@ import numpy as np
 import math 
 import sklearn.datasets as dataset
 
-def generate_data(n_samples=20, n_feats=2):
+def generate_data(n_samples=20, n_feats=3):
   """ Generates simulated data.
   Args:
-      n_samples (int): observed students.
-      n_feats (int): number of features characterizing each student.
+      n_samples (int): observed bacterias.
+      n_feats (int): number of features characterizing each bacteria.
       n_groups (int): number of groups (clusters).
   Returns:
       x (ndarray): the features (inputs).
@@ -15,7 +15,7 @@ def generate_data(n_samples=20, n_feats=2):
   # we always get the same psuedo-random number sequence.
   np.random.seed(121)
 
-  # Sample features for n_samples students, distributed 
+  # Sample features for n_samples bacterias, distributed 
   # around n_groups centers.
   x, _ = dataset.make_blobs(n_samples=n_samples-2, 
                             n_features=n_feats, 
